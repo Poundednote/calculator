@@ -9,7 +9,7 @@ html, body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, sans-serif, 'Inter',
     monospace;
 }
 
@@ -17,6 +17,7 @@ code {
   padding: 40px;
   border-width: 1px;
   border-color: grey;
+  font-size: 16px;
 
 }
 
@@ -36,4 +37,11 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
+}
+
+.screen {
+  font-size: 70px;
+  margin: 0px;
+  background-color: #BDC8BA;
+  text-align: right;
 }

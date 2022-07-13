@@ -92,7 +92,7 @@ class App extends Component {
       <div className="App">
         <h1>Calculator</h1>
         <Screen value={this.state.num ? this.state.num : this.state.result} />
-        <div className="Buttons container-fluid">
+        <div className="Buttons">
           <Operator sign="/" handleOperator={this.handleOperator} />
           <Button number={1} handleNum={this.handleNum} />
           <Button number={2} handleNum={this.handleNum} />
@@ -106,13 +106,13 @@ class App extends Component {
           <Button number={9} handleNum={this.handleNum} />
           <Button number={0} handleNum={this.handleNum} />
           <Operator sign="-" handleOperator={this.handleOperator} />
-          <Clear handleClear={this.handleClear} />
-          <Reset handleReset={this.handleReset} />
           <Equals
             sign={this.state.sign}
             num={this.state.num}
             handleResult={this.handleResult}
           />
+          <Clear handleClear={this.handleClear} />
+          <Reset handleReset={this.handleReset} />
         </div>
       </div>
     );
@@ -124,7 +124,7 @@ class Screen extends Component {
   }
 
   render() {
-    return <h1>{this.props.value}</h1>;
+    return <p className="screen">{this.props.value}</p>;
   }
 }
 
