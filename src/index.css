@@ -1,13 +1,39 @@
-body {
+html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.number, .operator, .equals, .clear {
+  padding: 40px;
+  border-width: 1px;
+  border-color: grey;
+
+}
+
+.number {
+  background-color: #6F8790;
+}
+
+.equals {
+  background-color: #9A7160; 
+}
+
+.operator {
+  background-color: #8B9FA7;
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
 }

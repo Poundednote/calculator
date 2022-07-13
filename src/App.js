@@ -92,27 +92,28 @@ class App extends Component {
       <div className="App">
         <h1>Calculator</h1>
         <Screen value={this.state.num ? this.state.num : this.state.result} />
-        <Button number={0} handleNum={this.handleNum} />
-        <Button number={1} handleNum={this.handleNum} />
-        <Button number={2} handleNum={this.handleNum} />
-        <Button number={3} handleNum={this.handleNum} />
-        <Button number={4} handleNum={this.handleNum} />
-        <Button number={5} handleNum={this.handleNum} />
-        <Button number={6} handleNum={this.handleNum} />
-        <Button number={7} handleNum={this.handleNum} />
-        <Button number={8} handleNum={this.handleNum} />
-        <Button number={9} handleNum={this.handleNum} />
-        <Operator sign="+" handleOperator={this.handleOperator} />
-        <Operator sign="x" handleOperator={this.handleOperator} />
-        <Operator sign="-" handleOperator={this.handleOperator} />
-        <Operator sign="/" handleOperator={this.handleOperator} />
-        <Equals
-          sign={this.state.sign}
-          num={this.state.num}
-          handleResult={this.handleResult}
-        />
-        <Clear handleClear={this.handleClear} />
-        <Reset handleReset={this.handleReset} />
+        <div className="Buttons container-fluid">
+          <Operator sign="/" handleOperator={this.handleOperator} />
+          <Button number={1} handleNum={this.handleNum} />
+          <Button number={2} handleNum={this.handleNum} />
+          <Button number={3} handleNum={this.handleNum} />
+          <Operator sign="+" handleOperator={this.handleOperator} />
+          <Button number={5} handleNum={this.handleNum} />
+          <Button number={6} handleNum={this.handleNum} />
+          <Button number={7} handleNum={this.handleNum} />
+          <Operator sign="x" handleOperator={this.handleOperator} />
+          <Button number={8} handleNum={this.handleNum} />
+          <Button number={9} handleNum={this.handleNum} />
+          <Button number={0} handleNum={this.handleNum} />
+          <Operator sign="-" handleOperator={this.handleOperator} />
+          <Clear handleClear={this.handleClear} />
+          <Reset handleReset={this.handleReset} />
+          <Equals
+            sign={this.state.sign}
+            num={this.state.num}
+            handleResult={this.handleResult}
+          />
+        </div>
       </div>
     );
   }
@@ -130,7 +131,10 @@ class Screen extends Component {
 class Button extends Component {
   render() {
     return (
-      <button onClick={() => this.props.handleNum(this.props.number)}>
+      <button
+        className="btn btn-block number"
+        onClick={() => this.props.handleNum(this.props.number)}
+      >
         {this.props.number}
       </button>
     );
@@ -140,7 +144,10 @@ class Button extends Component {
 class Operator extends Component {
   render() {
     return (
-      <button onClick={() => this.props.handleOperator(this.props.sign)}>
+      <button
+        className="btn btn-block operator"
+        onClick={() => this.props.handleOperator(this.props.sign)}
+      >
         {this.props.sign}
       </button>
     );
@@ -151,6 +158,7 @@ class Equals extends Component {
   render() {
     return (
       <button
+        className="btn btn-block equals"
         onClick={() => this.props.handleResult(this.props.sign, this.props.num)}
       >
         {"="}
@@ -160,10 +168,18 @@ class Equals extends Component {
 }
 
 function Clear(props) {
-  return <button onClick={() => props.handleClear()}>{"C"}</button>;
+  return (
+    <button className="btn btn-block clear" onClick={() => props.handleClear()}>
+      {"C"}
+    </button>
+  );
 }
 
 function Reset(props) {
-  return <button onClick={() => props.handleReset()}>{"R"}</button>;
+  return (
+    <button className="btn btn-block clear" onClick={() => props.handleReset()}>
+      {"R"}
+    </button>
+  );
 }
 export default App;
