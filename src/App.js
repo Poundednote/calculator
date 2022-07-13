@@ -16,6 +16,9 @@ class App extends Component {
 
   handleNum = (value) => {
     if (this.state.num) {
+      /* supports multidigit numbers by checking if user already press a number and upon pressing 
+          another without an operator will concatenate the two numbers
+      */
       this.setState({
         num: Number(this.state.num.toString() + value.toString()),
       });
@@ -29,12 +32,14 @@ class App extends Component {
   handleOperator = (value) => {
     this.setState({
       sign: value,
-      lastNum: this.state.num ? this.state.num : this.state.result,
+      lastNum: this.state.num ? this.state.num : this.state.result, // allows user to add a number onto previous result
       num: 0,
     });
   };
 
   handleResult = (sign, value) => {
+    /* Checks the operator last pressed by the user and does the corresponding operation on the numbers and stores result in state
+      while changing the current number back to 0  */
     if (sign === "+") {
       let newResult = this.state.lastNum + this.state.num;
       this.setState({
@@ -69,6 +74,19 @@ class App extends Component {
     }
   };
 
+  handleClear = () => {
+    this.setState({
+      num: 0,
+    });
+  };
+
+  handleReset = () => {
+    this.setState({
+      num: 0,
+      result: 0,
+    });
+  };
+
   render() {
     return (
       <div className="App">
@@ -93,6 +111,8 @@ class App extends Component {
           num={this.state.num}
           handleResult={this.handleResult}
         />
+        <Clear handleClear={this.handleClear} />
+        <Reset handleReset={this.handleReset} />
       </div>
     );
   }
@@ -137,5 +157,13 @@ class Equals extends Component {
       </button>
     );
   }
+}
+
+function Clear(props) {
+  return <button onClick={() => props.handleClear()}>{"C"}</button>;
+}
+
+function Reset(props) {
+  return <button onClick={() => props.handleReset()}>{"R"}</button>;
 }
 export default App;
